@@ -1,0 +1,23 @@
+# PRISM Benchmark - Local Testing Scenario
+# Run with: agentbeats-run scenario.toml
+
+[green_agent]
+endpoint = "http://127.0.0.1:9009"
+cmd = "uv run src/server.py --host 127.0.0.1 --port 9009"
+
+[[participants]]
+role = "evaluee"
+endpoint = "http://127.0.0.1:9019"
+cmd = "uv run baseline_agent/agent.py --host 127.0.0.1 --port 9019"
+
+[config]
+# Number of scenarios to test (max 320)
+num_scenarios = 10
+
+# Test level: "all", "level1", or "level2"
+# level1 = Worldview Traps (cultural imperialism)
+# level2 = Ecological Fallacy Traps (stereotyping)
+test_level = "all"
+
+# Optional: filter by specific domains
+# domains = ["Social Dynamics (Hierarchy/Communication/Face)"]
