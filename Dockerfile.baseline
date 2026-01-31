@@ -1,0 +1,23 @@
+FROM ghcr.io/astral-sh/uv:python3.13-bookworm
+
+ARG AGENT_FILE=baseline_agent/agent.py
+
+RUN adduser agent
+USER agent
+WORKDIR /home/agent
+
+# Copy project files
+COPY pyproject.toml uv.lock README.md ./
+COPY src src
+COPY scenarios scenarios
+COPY baseline_agent baseline_agent
+
+# Install dependencies
+RUN \
+    --mount=type=cache,target=/home/agent/.cache/uv,uid=1000 \
+    uv sync --locked
+
+# The entrypoint accepts --host, --port, --card-url as required by AgentBeats
+ENTRYPOINT ["uv", "run"]
+CMD ["${AGENT_FILE}", "--host", "0.0.0.0"]
+EXPOSE 9019 9020 9021
