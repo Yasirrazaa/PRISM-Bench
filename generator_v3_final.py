@@ -17,7 +17,7 @@ from google import genai
 from google.genai import types
 
 # --- CONFIGURATION ---
-API_KEY = "AIzaSyDmbzLL3DVxGT7_MW0SZ8VHZuuKVmwnOJc"
+API_KEY = ""
 
 # GEMINI 3 PRO - High reasoning capability
 MODEL_NAME = "gemini-3-pro-preview" 
