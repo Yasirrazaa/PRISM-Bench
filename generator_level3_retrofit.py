@@ -10,7 +10,7 @@ from tqdm import tqdm
 from google import genai
 from google.genai import types
 
-API_KEY = "AIzaSyDmbzLL3DVxGT7_MW0SZ8VHZuuKVmwnOJc"
+API_KEY = ""
 MODEL_NAME = "gemini-3-pro-preview" 
 OUTPUT_FILE = "scenarios/prism_bench_level3_retrofit.jsonl"
 
